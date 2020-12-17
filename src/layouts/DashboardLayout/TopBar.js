@@ -37,9 +37,7 @@ const TopBar = ({
       {...rest}
     >
       <Toolbar>
-        <RouterLink to="/">
-          <Logo />
-        </RouterLink>
+        <Logo />
         <Box flexGrow={1} />
         <Hidden lgUp>
           <IconButton
