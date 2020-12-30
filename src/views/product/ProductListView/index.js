@@ -42,7 +42,7 @@ const ProductList = () => {
   return (
     <Page
       className={classes.root}
-      title="Products"
+      title="Productos"
     >
       <Container maxWidth={false}>
         <Toolbar />

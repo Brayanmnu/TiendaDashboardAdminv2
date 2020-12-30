@@ -13,6 +13,7 @@ import {
 } from '@material-ui/core';
 import { Search as SearchIcon } from 'react-feather';
 
+
 const useStyles = makeStyles((theme) => ({
   root: {},
   importButton: {
@@ -25,7 +26,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Toolbar = ({ className, ...rest }) => {
   const classes = useStyles();
-
 
   return (
     <div
@@ -42,6 +42,7 @@ const Toolbar = ({ className, ...rest }) => {
         <Button
           color="primary"
           variant="contained"
+          href='/app/products/add_products'
         >
           Agregar producto
         </Button>
