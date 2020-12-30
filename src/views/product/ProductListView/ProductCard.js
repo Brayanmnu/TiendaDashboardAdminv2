@@ -11,8 +11,8 @@ import {
   Typography,
   makeStyles
 } from '@material-ui/core';
-import AccessTimeIcon from '@material-ui/icons/AccessTime';
-import GetAppIcon from '@material-ui/icons/GetApp';
+import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
+import ListIcon from '@material-ui/icons/List';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,7 +44,7 @@ const ProductCard = ({ className, product, ...rest }) => {
         >
           <Avatar
             alt="Product"
-            src={product.media}
+            src={product.nombre}
             variant="square"
           />
         </Box>
@@ -54,14 +54,14 @@ const ProductCard = ({ className, product, ...rest }) => {
           gutterBottom
           variant="h4"
         >
-          {product.title}
+          {product.nombre}
         </Typography>
         <Typography
           align="center"
           color="textPrimary"
           variant="body1"
         >
-          {product.description}
+          {product.descTipoProducto}
         </Typography>
       </CardContent>
       <Box flexGrow={1} />
@@ -76,7 +76,7 @@ const ProductCard = ({ className, product, ...rest }) => {
             className={classes.statsItem}
             item
           >
-            <AccessTimeIcon
+            <MonetizationOnIcon
               className={classes.statsIcon}
               color="action"
             />
@@ -85,14 +85,14 @@ const ProductCard = ({ className, product, ...rest }) => {
               display="inline"
               variant="body2"
             >
-              Updated 2hr ago
+              S/.{product.precio}
             </Typography>
           </Grid>
           <Grid
             className={classes.statsItem}
             item
           >
-            <GetAppIcon
+            <ListIcon
               className={classes.statsIcon}
               color="action"
             />
@@ -101,9 +101,9 @@ const ProductCard = ({ className, product, ...rest }) => {
               display="inline"
               variant="body2"
             >
-              {product.totalDownloads}
+              {product.stock}
               {' '}
-              Downloads
+              unidades
             </Typography>
           </Grid>
         </Grid>

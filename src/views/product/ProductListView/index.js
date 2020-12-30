@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
+import axios from 'axios';
 import {
   Box,
   Container,
@@ -9,7 +10,6 @@ import { Pagination } from '@material-ui/lab';
 import Page from 'src/components/Page';
 import Toolbar from './Toolbar';
 import ProductCard from './ProductCard';
-import data from './data';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,10 +22,22 @@ const useStyles = makeStyles((theme) => ({
     height: '100%'
   }
 }));
-
+const baseUrl="http://localhost:8080/producto/";
 const ProductList = () => {
   const classes = useStyles();
-  const [products] = useState(data);
+  const [products,setProductos] = useState([]);
+  const obtenerTodosProductosNoEliminados=async()=>{
+    await axios.get(baseUrl + "obtener_todos_productos_no_eliminados")
+    .then(res=>{setProductos(res.data)});
+  }
+  
+  useEffect(()=>{
+    async function fetchData(){
+      await obtenerTodosProductosNoEliminados();
+    }
+    
+    fetchData();
+  },[])
 
   return (
     <Page
@@ -60,11 +72,8 @@ const ProductList = () => {
           display="flex"
           justifyContent="center"
         >
-          <Pagination
-            color="primary"
-            count={3}
-            size="small"
-          />
+          <Pagination count={products.length%10===0 ? products.length/10 : products.length/10 +1} />
+          
         </Box>
       </Container>
     </Page>
